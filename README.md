@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>EVASANTHI SIVASANKAR</H3>
+<H3>212223040234</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>17.03.25</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,60 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
+
+data = pd.read_csv('Student_Performance_on_an_Entrance_Examination.csv')
+
+
+print(data.isnull().sum())
+
+
+print(data.head())
+
+print(data.info())
+
+encoder= OneHotEncoder()
+
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Gender']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Caste']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['coaching']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Class_ten_education']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['twelve_education']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['medium']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Class_X_Percentage']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Class_XII_Percentage']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Father_occupation']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Mother_occupation']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['time']]).toarray())
+encoded_data= pd.DataFrame(encoder.fit_transform(data[['Performance']]).toarray())
+
+
+x=data.drop('Performance',axis=1)
+y=data['Performance']
+
+
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+
+print("Training data")
+print(x_train)
+print(y_train)
+print("Testing data")
+print(x_test)
+print(y_test)
+print("Length of X_test: ", len(x_test))
+```
 
 
 ## OUTPUT:
 SHOW YOUR OUTPUT HERE
+![image-1](https://github.com/user-attachments/assets/b6b2762b-5af7-45da-8db0-f928a4aac353)
+![image-2](https://github.com/user-attachments/assets/8ee632a7-1287-4363-9103-8ad6b0da4c91)
+![image-3](https://github.com/user-attachments/assets/47dc6c68-3d1d-4a98-967e-dbd090f5d1b9)
 
 
 ## RESULT:
